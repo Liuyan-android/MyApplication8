@@ -13,11 +13,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".lyActivity" />
-        <activity android:name=".lyActivity2">
+        <activity android:name=".lyActivity2"></activity>
+        <activity android:name=".lyActivity3" />
+        <activity android:name=".lyActivity5">
 
         </activity>
-        <activity android:name=".lyActivity3"></activity>
-        <activity android:name=".lyActivity5">
+        <activity android:name=".lyActivity6">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
