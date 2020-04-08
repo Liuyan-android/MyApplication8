@@ -78,6 +78,6 @@ public  void  alert_dialog(View view){
 
     });
 
-    builder.create().show();;
+    builder.create().show();
 }
 }
