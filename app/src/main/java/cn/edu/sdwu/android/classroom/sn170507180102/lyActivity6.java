@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import org.xmlpull.v1.XmlPullParser;
+
 public class lyActivity6 extends AppCompatActivity {
 
     @Override
@@ -22,33 +24,50 @@ public class lyActivity6 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_6);
         //在JAVA里面获取资源
-        String content=getString(R.string.hello);
-        Log.i(lyActivity6.this.toString(),content);
-    String sms=getString(R.string.sms);
-        sms=String.format(sms,100,"张三");
-        Log.i(lyActivity6.this.toString(),sms);
+        String content = getString(R.string.hello);
+        Log.i(lyActivity6.this.toString(), content);
+        String sms = getString(R.string.sms);
+        sms = String.format(sms, 100, "张三");
+        Log.i(lyActivity6.this.toString(), sms);
         //获取数组资源
-        Resources resources=getResources();
+        Resources resources = getResources();
         //整型数组
-       int[] inArr=resources.getIntArray(R.array.inArr);
-        for(int i=0;i<inArr.length;i++){
-            Log.i(lyActivity6.this.toString(),inArr[i]+"");
+        int[] inArr = resources.getIntArray(R.array.inArr);
+        for (int i = 0; i < inArr.length; i++) {
+            Log.i(lyActivity6.this.toString(), inArr[i] + "");
         }
         //字符串数组
-       String[] strArr=resources.getStringArray(R.array.strArr);
-for(int i=0;i<strArr.length;i++){
-    Log.i(lyActivity6.this.toString(),strArr[i]+"");
-}
+        String[] strArr = resources.getStringArray(R.array.strArr);
+        for (int i = 0; i < strArr.length; i++) {
+            Log.i(lyActivity6.this.toString(), strArr[i] + "");
+        }
 //普通类型数组
-       TypedArray typedArray= resources.obtainTypedArray(R.array.commanArr);
-        ImageView imageView=(ImageView)findViewById(R.id.ly_6);
-        int resId=typedArray.getResourceId(0,0);
+        TypedArray typedArray = resources.obtainTypedArray(R.array.commanArr);
+        ImageView imageView = (ImageView) findViewById(R.id.ly_6);
+        int resId = typedArray.getResourceId(0, 0);
         imageView.setImageResource(resId);
-         String str=typedArray.getString(1);
-        Log.i(lyActivity6.this.toString(),str);
+        String str = typedArray.getString(1);
+        Log.i(lyActivity6.this.toString(), str);
         //注册上下文菜单
-        LinearLayout linearLayout=(LinearLayout)findViewById(R.id.ly_1_1);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ly_1_1);
         registerForContextMenu(linearLayout);
+        XmlPullParser xmlPullParser = resources.getXml(R.xml.words);
+        try {
+            while (xmlPullParser.getEventType() != XmlPullParser.END_DOCUMENT) {
+if (xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+    //判断一下是否是words元素
+   if (xmlPullParser.getName().equals("word")){
+       String word=xmlPullParser.getAttributeValue(0);
+       Log.i(lyActivity6.class.toString(),word);
+
+   }
+}
+         xmlPullParser.next();
+            }
+        } catch (Exception e) {
+            Log.e(lyActivity6.class.toString(),e.toString());
+
+        }
     }
 
     @Override
