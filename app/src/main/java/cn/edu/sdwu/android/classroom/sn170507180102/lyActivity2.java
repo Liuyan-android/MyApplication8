@@ -3,6 +3,7 @@ package cn.edu.sdwu.android.classroom.sn170507180102;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -28,5 +29,6 @@ public class lyActivity2 extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
